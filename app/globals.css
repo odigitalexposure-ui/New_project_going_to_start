@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4efe8;
+  --foreground: #18140f;
+  --muted: #6f6558;
+  --line: rgba(24, 20, 15, 0.1);
+  --card: rgba(255, 255, 255, 0.72);
+  --brand: #1f4d47;
+  --brand-strong: #153933;
+  --brand-soft: #dce9e6;
+  --accent: #c48847;
+  --sand: #e8ddd0;
+  --shadow: 0 20px 60px rgba(30, 27, 24, 0.12);
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-body: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(196, 136, 71, 0.12), transparent 24rem),
+    radial-gradient(circle at top right, rgba(31, 77, 71, 0.15), transparent 28rem),
+    linear-gradient(180deg, #f8f4ef 0%, #f4efe8 45%, #f1ebe2 100%);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: rgba(31, 77, 71, 0.16);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-card: var(--card);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-accent: var(--accent);
+  --color-sand: var(--sand);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+
+  p {
+    color: var(--muted);
+    line-height: 1.72;
+  }
+
+  input,
+  textarea {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .surface {
+    background: var(--card);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-white/70 px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-brand;
+  }
+
+  .section-space {
+    @apply py-18 sm:py-22 lg:py-28;
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-brand-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-line bg-white/75 px-6 py-3 text-sm font-semibold text-foreground transition duration-300 hover:-translate-y-0.5 hover:border-brand/30 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  .grid-glow {
+    background-image:
+      linear-gradient(rgba(24, 20, 15, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(24, 20, 15, 0.05) 1px, transparent 1px);
+    background-size: 2rem 2rem;
+    background-position: center;
+  }
+}
